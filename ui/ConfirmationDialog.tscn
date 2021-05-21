@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/ConfirmationDialog.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 3.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.278431, 0.423529, 0.431373, 0.784314 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.52549, 0.52549, 0.52549, 1 )
+
+[node name="ConfirmationDialog" type="PanelContainer"]
+margin_right = 280.0
+margin_bottom = 90.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 279.0
+margin_bottom = 89.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 273.0
+margin_bottom = 83.0
+custom_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 268.0
+margin_bottom = 19.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 266.0
+margin_bottom = 17.0
+size_flags_vertical = 2
+text = "Override?"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 29.0
+margin_right = 268.0
+margin_bottom = 48.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="OkButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 85.0
+margin_right = 107.0
+margin_bottom = 19.0
+text = "Ok"
+flat = true
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 137.0
+margin_right = 183.0
+margin_bottom = 19.0
+text = "Cancel"
+flat = true
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OkButton" to="." method="_on_OkButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]

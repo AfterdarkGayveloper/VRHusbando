@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/ovr_toolkit/input/devices/hand/LeftHand.tscn" type="PackedScene" id=1]
+[ext_resource path="res://misc_materials/Hand.material" type="Material" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.85356
+height = 2.51306
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.766784
+height = 0.924667
+
+[node name="LeftHandPhysics" instance=ExtResource( 1 )]
+skeleton = NodePath("ArmatureLeft/Skeleton")
+
+[node name="Skeleton" parent="ArmatureLeft" index="0"]
+bones/0/bound_children = [  ]
+bones/2/bound_children = [  ]
+bones/6/bound_children = [  ]
+bones/7/bound_children = [  ]
+bones/8/bound_children = [  ]
+bones/11/bound_children = [  ]
+bones/12/bound_children = [  ]
+
+[node name="BoneAttachment" parent="ArmatureLeft/Skeleton" index="0"]
+transform = Transform( 0.715415, 0.480301, 0.507437, -0.520631, 0.850801, -0.0712855, -0.465966, -0.213189, 0.858735, 3.59584, -2.80285, -1.91577 )
+
+[node name="BoneAttachment 2" parent="ArmatureLeft/Skeleton" index="1"]
+transform = Transform( 0.992608, 0.0543436, -0.108515, 0.109344, -0.0125266, 0.993925, 0.0526541, -0.998444, -0.0183762, 15.792, -2.06916, -1.2769 )
+
+[node name="BoneAttachment 3" parent="ArmatureLeft/Skeleton" index="2"]
+transform = Transform( 0.992608, 0.0543436, -0.108515, 0.109344, -0.0125266, 0.993925, 0.0526541, -0.998444, -0.0183762, 15.792, -2.06916, -1.2769 )
+
+[node name="BoneAttachment 4" parent="ArmatureLeft/Skeleton" index="3"]
+transform = Transform( 0.992608, 0.0543436, -0.108515, 0.109344, -0.0125266, 0.993925, 0.0526541, -0.998444, -0.0183762, 15.792, -2.06916, -1.2769 )
+
+[node name="BoneAttachment 5" parent="ArmatureLeft/Skeleton" index="4"]
+transform = Transform( 0.994319, -0.0918412, -0.0538007, 0.0547372, 0.00770647, 0.998471, -0.0912861, -0.995744, 0.0126898, 13.3754, -2.20219, -1.05505 )
+
+[node name="BoneAttachment 6" parent="ArmatureLeft/Skeleton" index="5"]
+transform = Transform( 0.995542, -0.0875827, -0.0349953, 0.0403074, 0.0596366, 0.997406, -0.0852684, -0.994371, 0.062901, 9.59962, -2.35507, -0.731646 )
+
+[node name="BoneAttachment 7" parent="ArmatureLeft/Skeleton" index="6"]
+transform = Transform( 0.987593, 0.0968454, -0.123618, 0.132458, -0.0908864, 0.987013, 0.0843523, -0.991141, -0.102587, 16.5356, 0.568593, -0.979278 )
+
+[node name="BoneAttachment 8" parent="ArmatureLeft/Skeleton" index="7"]
+transform = Transform( 0.987593, 0.0968454, -0.123618, 0.132458, -0.0908864, 0.987013, 0.0843523, -0.991141, -0.102587, 16.5356, 0.568593, -0.979278 )
+
+[node name="BoneAttachment 9" parent="ArmatureLeft/Skeleton" index="8"]
+transform = Transform( 0.987593, 0.0968454, -0.123618, 0.132458, -0.0908864, 0.987013, 0.0843523, -0.991141, -0.102587, 16.5356, 0.568593, -0.979278 )
+
+[node name="BoneAttachment 10" parent="ArmatureLeft/Skeleton" index="9"]
+transform = Transform( 0.988767, -0.0960949, -0.114484, 0.110551, -0.0453154, 0.992837, -0.100594, -0.99434, -0.034183, 13.8116, 0.264029, -0.702145 )
+
+[node name="l_handMeshNode" parent="ArmatureLeft/Skeleton" index="11"]
+material_override = ExtResource( 2 )
+
+[node name="BoneAttachment2" type="BoneAttachment" parent="ArmatureLeft/Skeleton" index="12"]
+transform = Transform( 0.992608, 0.0543435, -0.108515, 0.109344, -0.0125266, 0.993925, 0.0526541, -0.998444, -0.0183762, 16.9417, -1.94251, -1.21591 )
+bone_name = "b_l_index_null"
+
+[node name="RigidBody" type="RigidBody" parent="ArmatureLeft/Skeleton/BoneAttachment2" index="0"]
+transform = Transform( 1, 7.45058e-09, -2.91038e-10, -3.72529e-09, 1, -3.72529e-09, -2.86382e-08, 0, 1, -0.210922, -0.0115476, 0.0230584 )
+collision_layer = 16
+collision_mask = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="ArmatureLeft/Skeleton/BoneAttachment2/RigidBody" index="0"]
+transform = Transform( 0.0121916, -0.0383409, -0.99919, -0.0711392, 0.996699, -0.0391136, 0.997392, 0.0715582, 0.00942405, -0.848763, -0.0456808, 0.0500078 )
+shape = SubResource( 1 )
+
+[node name="BoneAttachment6" type="BoneAttachment" parent="ArmatureLeft/Skeleton" index="13"]
+transform = Transform( 0.575561, 0.67335, 0.464036, -0.739133, 0.671136, -0.0570911, -0.349873, -0.310125, 0.883975, 9.16781, -7.78986, -4.89121 )
+bone_name = "b_l_thumb_null"
+
+[node name="RigidBody" type="RigidBody" parent="ArmatureLeft/Skeleton/BoneAttachment6" index="0"]
+transform = Transform( 1, -7.45058e-09, 5.96046e-08, -1.2666e-07, 1, -5.96046e-08, -2.98023e-08, 0, 1, -0.236023, 0.232202, 0.0986385 )
+collision_layer = 16
+collision_mask = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="ArmatureLeft/Skeleton/BoneAttachment6/RigidBody" index="0"]
+transform = Transform( -0.125542, 0.32134, -0.938606, -0.0711695, 0.940737, 0.331589, 0.989531, 0.108429, -0.0952324, 0.0645857, -0.0591588, -0.113639 )
+shape = SubResource( 2 )
+
+[node name="BoneAttachment3" type="BoneAttachment" parent="ArmatureLeft/Skeleton" index="14"]
+transform = Transform( 0.987593, 0.0968453, -0.123618, 0.132458, -0.0908864, 0.987013, 0.0843522, -0.991141, -0.102587, 17.7408, 0.730237, -0.87634 )
+bone_name = "b_l_middle_null"
+
+[node name="RigidBody" type="RigidBody" parent="ArmatureLeft/Skeleton/BoneAttachment3" index="0"]
+transform = Transform( 1, 7.45058e-09, -2.91038e-10, -3.72529e-09, 1, -3.72529e-09, -2.86382e-08, 0, 1, -0.210922, -0.0115476, 0.0230584 )
+collision_layer = 16
+collision_mask = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="ArmatureLeft/Skeleton/BoneAttachment3/RigidBody" index="0"]
+transform = Transform( -0.00193236, -0.037245, -0.999304, -0.0702026, 0.996846, -0.0370175, 0.997531, 0.070082, -0.00454091, -0.648603, -0.0695004, 0.0460303 )
+shape = SubResource( 1 )
+
+[node name="BoneAttachment8" type="BoneAttachment" parent="ArmatureLeft/Skeleton" index="15"]
+transform = Transform( 0.978622, -0.029105, -0.203596, 0.195193, -0.180434, 0.964025, -0.0647936, -0.983155, -0.170895, 16.3572, 3.55227, -1.49422 )
+bone_name = "b_l_ring_null"
+
+[node name="RigidBody" type="RigidBody" parent="ArmatureLeft/Skeleton/BoneAttachment8" index="0"]
+transform = Transform( 1, 7.45058e-09, -2.91038e-10, -3.72529e-09, 1, -3.72529e-09, -2.86382e-08, 0, 1, -0.210922, -0.0115476, 0.0230584 )
+collision_layer = 16
+collision_mask = 2
+mode = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="ArmatureLeft/Skeleton/BoneAttachment8/RigidBody" index="0"]
+transform = Transform( -0.0216272, 0.0145775, -0.999661, -0.060965, 0.998013, 0.0158725, 0.997906, 0.0612875, -0.0206956, -0.800749, 0.0858556, 0.0611053 )
+shape = SubResource( 1 )

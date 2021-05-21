@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ui/MainGUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/ovr_toolkit/ui/panel_3d/Panel3D.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/MainGUI3D.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 4.53754, 3.05406, 0.0370895 )
+
+[sub_resource type="QuadMesh" id=2]
+size = Vector2( 9, 6 )
+
+[sub_resource type="ViewportTexture" id=3]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="SpatialMaterial" id=4]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+flags_albedo_tex_force_srgb = true
+albedo_texture = SubResource( 3 )
+
+[node name="MainGUI3D" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="Viewport" parent="." index="0"]
+size = Vector2( 420, 270 )
+transparent_bg = true
+
+[node name="MainGUI" parent="Viewport" index="0" instance=ExtResource( 1 )]
+
+[node name="Pointer" parent="Viewport" index="1"]
+visible = false
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Quad" parent="." index="2"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )
+
+[connection signal="close_pressed" from="Viewport/MainGUI" to="." method="_on_MainGUI_close_pressed"]

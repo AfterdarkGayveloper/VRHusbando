@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/screen/GUIBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screen/CreditsMenu.gd" type="Script" id=2]
+
+[node name="CreditsMenu" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="VSeparator" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="0"]
+visible = false
+
+[node name="BackButton" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="1"]
+margin_left = 0.0
+margin_right = 19.0
+
+[node name="TittleLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="2"]
+margin_left = 23.0
+margin_right = 377.0
+text = "Credits"
+
+[node name="CloseButton" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="3"]
+margin_left = 381.0
+margin_right = 400.0
+
+[node name="VSeparator2" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="4"]
+visible = false
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" index="0"]
+margin_left = 2.0
+margin_right = 408.0
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="0"]
+margin_right = 406.0
+margin_bottom = 202.0
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Character Model: [url=https://sfmlab.com/user/68/]https://sfmlab.com/user/68/[/url]
+Room: [url=https://sfmlab.com/user/10107/]https://sfmlab.com/user/10107/[/url]"
+text = "Character Model: https://sfmlab.com/user/68/
+Room: https://sfmlab.com/user/10107/"
+
+[connection signal="meta_clicked" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/RichTextLabel" to="." method="_on_RichTextLabel_meta_clicked"]

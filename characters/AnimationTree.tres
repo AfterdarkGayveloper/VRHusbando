@@ -1,0 +1,52 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=10 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "hip-thrust-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "blink"
+
+[sub_resource type="AnimationNodeBlend2" id=3]
+filter_enabled = true
+filters = [ "katsuki bakugoqc_skeleton/Skeleton:LI eyelid", "katsuki bakugoqc_skeleton/Skeleton:LO eyelid", "katsuki bakugoqc_skeleton/Skeleton:LT eyelid A", "katsuki bakugoqc_skeleton/Skeleton:LT eyelid B", "katsuki bakugoqc_skeleton/Skeleton:LT eyelid C", "katsuki bakugoqc_skeleton/Skeleton:LT eyelid D", "katsuki bakugoqc_skeleton/Skeleton:LU eyelid A", "katsuki bakugoqc_skeleton/Skeleton:LU eyelid B", "katsuki bakugoqc_skeleton/Skeleton:LU eyelid C", "katsuki bakugoqc_skeleton/Skeleton:LU eyelid D", "katsuki bakugoqc_skeleton/Skeleton:RI eyelid", "katsuki bakugoqc_skeleton/Skeleton:RO eyelid", "katsuki bakugoqc_skeleton/Skeleton:RT eyelid A", "katsuki bakugoqc_skeleton/Skeleton:RT eyelid B", "katsuki bakugoqc_skeleton/Skeleton:RT eyelid C", "katsuki bakugoqc_skeleton/Skeleton:RT eyelid D", "katsuki bakugoqc_skeleton/Skeleton:RU eyelid A", "katsuki bakugoqc_skeleton/Skeleton:RU eyelid B", "katsuki bakugoqc_skeleton/Skeleton:RU eyelid C", "katsuki bakugoqc_skeleton/Skeleton:RU eyelid D" ]
+
+[sub_resource type="AnimationNodeBlend2" id=4]
+filter_enabled = true
+filters = [ "katsuki bakugoqc_skeleton/Skeleton:L browskin A", "katsuki bakugoqc_skeleton/Skeleton:L browskin B", "katsuki bakugoqc_skeleton/Skeleton:L browskin C", "katsuki bakugoqc_skeleton/Skeleton:L browskin D", "katsuki bakugoqc_skeleton/Skeleton:L browskin E", "katsuki bakugoqc_skeleton/Skeleton:L cheek A", "katsuki bakugoqc_skeleton/Skeleton:L cheek B", "katsuki bakugoqc_skeleton/Skeleton:L cheek C", "katsuki bakugoqc_skeleton/Skeleton:L cheek D", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow A", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow B", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow C", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow D", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow E", "katsuki bakugoqc_skeleton/Skeleton:LT lip A", "katsuki bakugoqc_skeleton/Skeleton:LT lip B", "katsuki bakugoqc_skeleton/Skeleton:LT lip C", "katsuki bakugoqc_skeleton/Skeleton:LT lip D", "katsuki bakugoqc_skeleton/Skeleton:LU lip A", "katsuki bakugoqc_skeleton/Skeleton:LU lip B", "katsuki bakugoqc_skeleton/Skeleton:LU lip C", "katsuki bakugoqc_skeleton/Skeleton:R browskin A", "katsuki bakugoqc_skeleton/Skeleton:R browskin B", "katsuki bakugoqc_skeleton/Skeleton:R browskin C", "katsuki bakugoqc_skeleton/Skeleton:R browskin D", "katsuki bakugoqc_skeleton/Skeleton:R browskin E", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow A", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow B", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow C", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow D", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow E", "katsuki bakugoqc_skeleton/Skeleton:RT lip A", "katsuki bakugoqc_skeleton/Skeleton:RT lip B", "katsuki bakugoqc_skeleton/Skeleton:RT lip C", "katsuki bakugoqc_skeleton/Skeleton:RT lip D", "katsuki bakugoqc_skeleton/Skeleton:RU lip A", "katsuki bakugoqc_skeleton/Skeleton:RU lip B", "katsuki bakugoqc_skeleton/Skeleton:RU lip C", "katsuki bakugoqc_skeleton/Skeleton:T lip", "katsuki bakugoqc_skeleton/Skeleton:U lip", "katsuki bakugoqc_skeleton/Skeleton:U teeth" ]
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "angry"
+
+[sub_resource type="AnimationNodeStateMachine" id=6]
+states/angry/node = SubResource( 5 )
+states/angry/position = Vector2( 249, 192 )
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=8]
+filter_enabled = true
+filters = [ "katsuki bakugoqc_skeleton/Skeleton:BK L knee 00", "katsuki bakugoqc_skeleton/Skeleton:BK L knee 01", "katsuki bakugoqc_skeleton/Skeleton:BK L knee 02", "katsuki bakugoqc_skeleton/Skeleton:BK L knee 03", "katsuki bakugoqc_skeleton/Skeleton:BK R knee 00", "katsuki bakugoqc_skeleton/Skeleton:BK R knee 01", "katsuki bakugoqc_skeleton/Skeleton:BK R knee 02", "katsuki bakugoqc_skeleton/Skeleton:BK R knee 03", "katsuki bakugoqc_skeleton/Skeleton:COG", "katsuki bakugoqc_skeleton/Skeleton:L knee EX", "katsuki bakugoqc_skeleton/Skeleton:L leg EX", "katsuki bakugoqc_skeleton/Skeleton:R knee EX", "katsuki bakugoqc_skeleton/Skeleton:R leg EX", "katsuki bakugoqc_skeleton/Skeleton:bip_foot_L", "katsuki bakugoqc_skeleton/Skeleton:bip_foot_R", "katsuki bakugoqc_skeleton/Skeleton:bip_hip_L", "katsuki bakugoqc_skeleton/Skeleton:bip_hip_R", "katsuki bakugoqc_skeleton/Skeleton:bip_hips", "katsuki bakugoqc_skeleton/Skeleton:bip_knee_L", "katsuki bakugoqc_skeleton/Skeleton:bip_knee_R", "katsuki bakugoqc_skeleton/Skeleton:bip_pelvis", "katsuki bakugoqc_skeleton/Skeleton:bip_spine_0", "katsuki bakugoqc_skeleton/Skeleton:bip_toe_L", "katsuki bakugoqc_skeleton/Skeleton:bip_toe_R" ]
+
+[sub_resource type="AnimationNodeTimeScale" id=9]
+
+[resource]
+graph_offset = Vector2( -57, -98 )
+nodes/Animation/node = SubResource( 1 )
+nodes/Animation/position = Vector2( 200, 260 )
+nodes/blink/node = SubResource( 2 )
+nodes/blink/position = Vector2( 700, 140 )
+nodes/blink_blend/node = SubResource( 3 )
+nodes/blink_blend/position = Vector2( 700, -40 )
+nodes/expression_blend/node = SubResource( 4 )
+nodes/expression_blend/position = Vector2( 460, -40 )
+nodes/expression_state_machine/node = SubResource( 6 )
+nodes/expression_state_machine/position = Vector2( 420, 160 )
+nodes/idle/node = SubResource( 7 )
+nodes/idle/position = Vector2( -40, -20 )
+nodes/output/position = Vector2( 920, -40 )
+nodes/thrust_blend/node = SubResource( 8 )
+nodes/thrust_blend/position = Vector2( 200, -40 )
+nodes/thrust_time_scale/node = SubResource( 9 )
+nodes/thrust_time_scale/position = Vector2( 200, 140 )
+node_connections = [ "output", 0, "blink_blend", "expression_blend", 0, "thrust_blend", "expression_blend", 1, "expression_state_machine", "blink_blend", 0, "expression_blend", "blink_blend", 1, "blink", "thrust_blend", 0, "idle", "thrust_blend", 1, "thrust_time_scale", "thrust_time_scale", 0, "Animation" ]

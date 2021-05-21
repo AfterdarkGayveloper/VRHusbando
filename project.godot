@@ -1,0 +1,110 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AnimationTreeBlendController",
+"language": "GDScript",
+"path": "res://animation_tree_controllers/AnimationTreeBlendController.gd"
+}, {
+"base": "Node",
+"class": "AnimationTreeBlendControllerTimer",
+"language": "GDScript",
+"path": "res://animation_tree_controllers/AnimationTreeBlendControllerTimer.gd"
+}, {
+"base": "PanelContainer",
+"class": "GUIBase",
+"language": "GDScript",
+"path": "res://ui/screen/GUIBase.gd"
+}, {
+"base": "RayCast",
+"class": "GUIRayCast",
+"language": "GDScript",
+"path": "res://addons/ovr_toolkit/ui/panel_3d/GUIPointer.gd"
+}, {
+"base": "RigidBody",
+"class": "Grabbable",
+"language": "GDScript",
+"path": "res://addons/ovr_toolkit/interactions/Grabbable.gd"
+}, {
+"base": "Area",
+"class": "Grabber",
+"language": "GDScript",
+"path": "res://addons/ovr_toolkit/interactions/Grabber.gd"
+}, {
+"base": "Spatial",
+"class": "Label3D",
+"language": "GDScript",
+"path": "res://addons/ovr_toolkit/ui/label_3d/Label3D.gd"
+}, {
+"base": "Control",
+"class": "MainGUI",
+"language": "GDScript",
+"path": "res://ui/MainGUI.gd"
+}, {
+"base": "Spatial",
+"class": "MeshSet",
+"language": "GDScript",
+"path": "res://characters/MeshSet.gd"
+}, {
+"base": "Node",
+"class": "OVRInput",
+"language": "GDScript",
+"path": "res://addons/ovr_toolkit/input/OVRInput.gd"
+}, {
+"base": "Node",
+"class": "OVRInterface",
+"language": "GDScript",
+"path": "res://addons/ovr_toolkit/OVRInterface.gd"
+}, {
+"base": "StaticBody",
+"class": "Panel3D",
+"language": "GDScript",
+"path": "res://addons/ovr_toolkit/ui/panel_3d/Panel3D.gd"
+} ]
+_global_script_class_icons={
+"AnimationTreeBlendController": "",
+"AnimationTreeBlendControllerTimer": "",
+"GUIBase": "",
+"GUIRayCast": "",
+"Grabbable": "",
+"Grabber": "",
+"Label3D": "",
+"MainGUI": "",
+"MeshSet": "",
+"OVRInput": "",
+"OVRInterface": "",
+"Panel3D": ""
+}
+
+[application]
+
+config/name="VRHusbando"
+run/main_scene="res://World.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+UIEvents="*res://ui/autoload/UIEvents.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/animation_retargeting/plugin.cfg", "res://addons/shell_fur/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
+
+[rendering]
+
+vram_compression/import_etc=true
+quality/filters/msaa=5
+quality/filters/use_fxaa=true
+environment/default_environment="res://default_env.tres"

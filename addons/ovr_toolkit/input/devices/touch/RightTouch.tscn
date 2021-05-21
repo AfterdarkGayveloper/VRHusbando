@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/ovr_toolkit/input/devices/touch/RightTouch.glb" type="PackedScene" id=1]
+[ext_resource path="res://addons/ovr_toolkit/input/devices/touch/RightTouchAnimationTree.tres" type="AnimationNodeBlendTree" id=2]
+[ext_resource path="res://addons/ovr_toolkit/input/devices/touch/Touch.gd" type="Script" id=3]
+
+
+
+
+[node name="RightTouch" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = ExtResource( 2 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/ABlend/blend_amount = 0.0
+parameters/BBlend/blend_amount = 0
+parameters/GripBlend/blend_amount = 0
+parameters/MenuBlend/blend_amount = 0
+parameters/ThumbstickBlend/blend_amount = 1.0
+parameters/ThumbstickBlendSpace/blend_position = Vector2( 0, 0 )
+parameters/TriggerBlend/blend_amount = 0

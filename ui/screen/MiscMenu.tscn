@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/screen/GUIBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screen/MiscMenu.gd" type="Script" id=2]
+
+[node name="MiscMenu" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="VSeparator" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="0"]
+visible = false
+
+[node name="BackButton" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="1"]
+margin_left = 0.0
+margin_right = 19.0
+
+[node name="TittleLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="2"]
+margin_left = 23.0
+margin_right = 377.0
+text = "Misc"
+
+[node name="CloseButton" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="3"]
+margin_left = 381.0
+margin_right = 400.0
+
+[node name="VSeparator2" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="4"]
+visible = false
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" index="0"]
+margin_left = 167.0
+margin_right = 243.0
+
+[node name="HardButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="0"]
+margin_right = 76.0
+margin_bottom = 36.0
+toggle_mode = true
+action_mode = 0
+text = "Hard"
+
+[node name="StareButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="1"]
+margin_top = 40.0
+margin_right = 76.0
+margin_bottom = 76.0
+toggle_mode = true
+pressed = true
+action_mode = 0
+text = "Stare"
+
+[node name="ThrustButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="2"]
+margin_top = 80.0
+margin_right = 76.0
+margin_bottom = 116.0
+toggle_mode = true
+action_mode = 0
+text = "Thrust"
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HardButton" to="." method="_on_HardButton_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/StareButton" to="." method="_on_StareButton_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ThrustButton" to="." method="_on_ThrustButton_button_up"]

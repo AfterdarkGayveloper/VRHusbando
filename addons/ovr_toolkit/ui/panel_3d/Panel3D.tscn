@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/ovr_toolkit/ui/panel_3d/Panel3D.gd" type="Script" id=1]
+[ext_resource path="res://addons/ovr_toolkit/ui/panel_3d/circle.png" type="Texture" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 3.09259, 2.06519, 0.01 )
+
+[sub_resource type="QuadMesh" id=2]
+size = Vector2( 6, 4 )
+
+[sub_resource type="ViewportTexture" id=3]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="SpatialMaterial" id=4]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+flags_albedo_tex_force_srgb = true
+albedo_texture = SubResource( 3 )
+
+[node name="Panel3D" type="StaticBody"]
+collision_layer = 524288
+collision_mask = 524288
+script = ExtResource( 1 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 280, 180 )
+hdr = false
+usage = 0
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="Pointer" type="TextureRect" parent="Viewport"]
+margin_left = -10.0
+margin_top = -10.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01 )
+shape = SubResource( 1 )
+
+[node name="Quad" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )

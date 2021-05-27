@@ -1,7 +1,7 @@
 extends Control
 class_name MainGUI
 
-enum { CHARACTERS, CLOTHES, MISC, CREDITS }
+enum { CHARACTERS, CLOTHES, MISC, CREDITS, SLOT }
 
 onready var main_menu = $MainMenu
 
@@ -9,6 +9,7 @@ onready var menus = {
 	CHARACTERS : $CharacterMenu,
 	CLOTHES : $ClothesMenu,
 	MISC : $MiscMenu,
+	SLOT : $SlotMenu,
 	CREDITS : $CreditsMenu
 }
 

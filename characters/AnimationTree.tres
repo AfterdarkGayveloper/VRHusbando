@@ -31,7 +31,7 @@ filters = [ "katsuki bakugoqc_skeleton/Skeleton:BK L knee 00", "katsuki bakugoqc
 [sub_resource type="AnimationNodeTimeScale" id=9]
 
 [resource]
-graph_offset = Vector2( -57, -98 )
+graph_offset = Vector2( -67, -70 )
 nodes/Animation/node = SubResource( 1 )
 nodes/Animation/position = Vector2( 200, 260 )
 nodes/blink/node = SubResource( 2 )
@@ -49,4 +49,4 @@ nodes/thrust_blend/node = SubResource( 8 )
 nodes/thrust_blend/position = Vector2( 200, -40 )
 nodes/thrust_time_scale/node = SubResource( 9 )
 nodes/thrust_time_scale/position = Vector2( 200, 140 )
-node_connections = [ "output", 0, "blink_blend", "expression_blend", 0, "thrust_blend", "expression_blend", 1, "expression_state_machine", "blink_blend", 0, "expression_blend", "blink_blend", 1, "blink", "thrust_blend", 0, "idle", "thrust_blend", 1, "thrust_time_scale", "thrust_time_scale", 0, "Animation" ]
+node_connections = [ "output", 0, "blink_blend", "thrust_blend", 0, "idle", "thrust_blend", 1, "thrust_time_scale", "thrust_time_scale", 0, "Animation", "blink_blend", 0, "expression_blend", "blink_blend", 1, "blink", "expression_blend", 0, "thrust_blend", "expression_blend", 1, "expression_state_machine" ]

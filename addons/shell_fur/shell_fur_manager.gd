@@ -3,9 +3,9 @@
 tool
 extends Spatial
 # Fur manager node. Is used to generate the fur objects and control it.
-# The node will only generate fur if it is set as a direct child to a 
+# The node will only generate fur if it is set as a direct child to a
 # MeshInstance node.
-# The node will generate fur in two separate ways based on whether the 
+# The node will generate fur in two separate ways based on whether the
 # MeshInstance node is a static mesh a skinned mesh.
 # For static meshes it use a MultiMeshInstance for skinned meshes it will create
 # a multi-layered mesh of its own MeshInstance mesh and place either as a child.
@@ -73,7 +73,7 @@ var cast_shadow := false setget set_cast_shadow
 # Physics
 var physics_custom_physics_pivot : NodePath setget set_custom_physics_pivot
 var physics_gravity := 0.1
-var physics_spring := 4.0 
+var physics_spring := 4.0
 var physics_damping := 0.1
 var physics_wind_strength := 0.0 setget set_wind_strength
 var physics_wind_speed := 1.0 setget set_wind_speed
@@ -86,7 +86,7 @@ var styling_normal_bias := 0.0 setget set_normal_bias
 
 # Level of Detail
 var lod_LOD0_distance := 10.0 setget set_LOD0_distance
-var lod_LOD1_distance := 100.0 setget set_LOD1_distance 
+var lod_LOD1_distance := 100.0 setget set_LOD1_distance
 
 # Public variables
 var fur_object : Spatial
@@ -95,8 +95,8 @@ var fur_object : Spatial
 var _material: ShaderMaterial = null
 var _lod_system
 var _physics_system
-var _parent_is_mesh_instance = false 
-var _parent_has_mesh_assigned = false 
+var _parent_is_mesh_instance = false
+var _parent_has_mesh_assigned = false
 var _parent_has_skin_assigned = false
 var _default_shader: Shader = null
 var _multimeshInstance : MultiMeshInstance = null
@@ -108,11 +108,11 @@ var _custom_pattern := false
 # Built-in Methods
 func _get_property_list() -> Array:
 	var props = []
-	
+
 	var shader_type_hint_string = "Regular, Mobile"
 	if custom_shader != null:
 		shader_type_hint_string += str(", Custom")
-	
+
 	props.append({
 			name = "shader_type",
 			type = TYPE_INT,
@@ -127,7 +127,7 @@ func _get_property_list() -> Array:
 			usage = PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
 			hint_string = "Shader"
 		})
-	
+
 	props.append({
 			name = "layers",
 			type = TYPE_INT,
@@ -135,11 +135,11 @@ func _get_property_list() -> Array:
 			hint_string = "4, 100",
 			usage = PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
 		})
-	
+
 	var pattern_selector_hint_string = "Very Fine, Fine, Rough, Very Rough, Monster"
 	if _custom_pattern or pattern_selector == PATTERNS.size():
 		pattern_selector_hint_string += str(", Custom")
-	
+
 	props.append({
 			name = "pattern_selector",
 			type = TYPE_INT,
@@ -172,7 +172,7 @@ func _get_property_list() -> Array:
 			hint_string = "mat_",
 			usage = PROPERTY_USAGE_GROUP | PROPERTY_USAGE_SCRIPT_VARIABLE,
 		})
-	
+
 	var mat_categories = MATERIAL_CATEGORIES.duplicate(true)
 	if _material.shader != null:
 		var shader_params := VisualServer.shader_get_param_list(_material.shader.get_rid())
@@ -198,7 +198,7 @@ func _get_property_list() -> Array:
 				cp[k] = p[k]
 			cp.name = str("mat_", p.name)
 			props.append(cp)
-	
+
 	props.append({
 			name = "Physics",
 			type = TYPE_NIL,
@@ -265,7 +265,7 @@ func _get_property_list() -> Array:
 			hint_string = "styling_",
 			usage = PROPERTY_USAGE_GROUP | PROPERTY_USAGE_SCRIPT_VARIABLE,
 		})
-	
+
 	var blendshapes_string := "Disabled"
 	if _parent_has_mesh_assigned:
 		if _parent_object.mesh.is_class("ArrayMesh"):
@@ -273,7 +273,7 @@ func _get_property_list() -> Array:
 				var b_shapes = _parent_object.mesh.get_blend_shape_count()
 				for b in b_shapes:
 					blendshapes_string += str(", ") + str(_parent_object.mesh.get_blend_shape_name(b))
-		
+
 	props.append({
 			name = "styling_blendshape",
 			type = TYPE_INT,
@@ -281,7 +281,7 @@ func _get_property_list() -> Array:
 			hint_string = blendshapes_string,
 			usage = PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
 		})
-	
+
 	if styling_blendshape != 0:
 		props.append({
 				name = "styling_normal_bias",
@@ -290,7 +290,7 @@ func _get_property_list() -> Array:
 				hint_string = "0.0, 1.0",
 				usage = PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
 			})
-	
+
 	props.append({
 			name = "Lod",
 			type = TYPE_NIL,
@@ -311,7 +311,7 @@ func _get_property_list() -> Array:
 			hint_string = "0.0, 1000.0",
 			usage = PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
 		})
-	
+
 	return props
 
 
@@ -356,7 +356,7 @@ func _init() -> void:
 	_lod_system.init(self)
 	_physics_system = load("res://addons/shell_fur/shell_fur_physics.gd").new()
 	_physics_system.init(self)
-	
+
 
 func _enter_tree() -> void:
 	if Engine.editor_hint and _first_enter_tree:
@@ -364,7 +364,7 @@ func _enter_tree() -> void:
 
 	_analyse_parent()
 	_physics_system.update_physics_object(0.5)
-	
+
 	if _parent_has_mesh_assigned:
 		# Delaying the fur update to avoid throwing below error on reparenting
 		# ERROR "scene/main/node.cpp:1554 - Condition "!owner_valid" is true."
@@ -378,13 +378,13 @@ func _enter_tree() -> void:
 		if pattern_texture == null:
 			pattern_texture = load(PATTERNS[0])
 		set_shader_param("i_pattern_texture", pattern_texture)
-		# For some reason we have to set some values like colors for them to 
+		# For some reason we have to set some values like colors for them to
 		# show correctly. Even though we are just setting them to themselves.
 		# To allow for custom shaders, we simply set all shader params to thier own value.
 		var shader_params := VisualServer.shader_get_param_list(_material.shader.get_rid())
 		for sp in shader_params:
 			set_shader_param(sp.name, get_shader_param(sp.name))
-	
+
 	# Updates the fur if it's needed, clears the fur if it's not
 	_update_fur(0.05)
 
@@ -451,7 +451,7 @@ func set_pattern_texture(texture : Texture, custom : bool = true) -> void:
 	if _first_enter_tree:
 		return
 	_custom_pattern = custom
-	
+
 	set_shader_param("i_pattern_texture", texture)
 	if custom:
 		set_pattern_selector(PATTERNS.size())
@@ -460,7 +460,7 @@ func set_pattern_texture(texture : Texture, custom : bool = true) -> void:
 func set_pattern_uv_scale(value : float) -> void:
 	pattern_uv_scale = value
 	set_shader_param("i_pattern_uv_scale", value)
-	
+
 
 func set_cast_shadow(value : bool) -> void:
 	cast_shadow = value
@@ -473,12 +473,12 @@ func set_shader_type(type: int):
 	if type == shader_type:
 		return
 	shader_type = type
-	
+
 	if shader_type == SHADER_TYPES.CUSTOM:
 		_material.shader = custom_shader
 	else:
 		_material.shader = load(BUILTIN_SHADERS[shader_type].shader_path)
-	
+
 	property_list_changed_notify()
 
 
@@ -488,18 +488,18 @@ func set_custom_shader(shader : Shader) -> void:
 	custom_shader = shader
 	if custom_shader != null:
 		_material.shader = custom_shader
-		
+
 		if Engine.editor_hint:
 			# Ability to fork default shader
 			if shader.code == "":
 				var selected_shader = load(BUILTIN_SHADERS[shader_type].shader_path) as Shader
 				shader.code = selected_shader.code
-	
+
 	if shader != null:
 		set_shader_type(SHADER_TYPES.CUSTOM)
 	else:
 		set_shader_type(SHADER_TYPES.REGULAR)
-	
+
 	property_list_changed_notify()
 
 
@@ -535,7 +535,7 @@ func set_blendshape(index: int) -> void:
 	styling_blendshape = index
 	if _first_enter_tree:
 		return
-	
+
 	property_list_changed_notify()
 	_update_fur(0.1)
 
@@ -572,11 +572,11 @@ func _analyse_parent() -> void:
 				if _parent_object.mesh.get_blend_shape_count() < styling_blendshape:
 					push_warning("Blendshape selection is higher than new mesh's amount of blendshapes. Disabling blendshape styling.")
 					styling_blendshape = 0
-			
+
 			if _parent_object.skin != null:
 				_parent_has_skin_assigned = true
 				_skeleton_object = _parent_object.get_parent()
-	
+
 	if not _parent_is_mesh_instance or not _parent_has_mesh_assigned or not is_arraymesh:
 		if styling_blendshape != 0:
 			push_warning("Fur is no longer assigned to a valid mesh. Disabling blendshape styling.")
@@ -587,10 +587,10 @@ func _update_fur(delay : float) -> void:
 	yield(get_tree().create_timer(delay), "timeout")
 	for child in get_children():
 		child.free()
-	
+
 	if not _parent_is_mesh_instance:
 		return
-	
+
 	if _parent_has_skin_assigned:
 		FurHelperMethods.generate_mesh_shells(self, _parent_object, layers, _material, styling_blendshape - 1)
 		fur_object = FurHelperMethods.generate_combined(self, _parent_object, _material, cast_shadow)
@@ -598,14 +598,14 @@ func _update_fur(delay : float) -> void:
 		_multimeshInstance = MultiMeshInstance.new()
 		add_child(_multimeshInstance)
 		# Uncomment to debug whether MMI is created
-		#_multimeshInstance.set_owner(get_tree().get_edited_scene_root()) 
+		#_multimeshInstance.set_owner(get_tree().get_edited_scene_root())
 		FurHelperMethods.generate_mmi(layers, _multimeshInstance, _parent_object.mesh, _material, styling_blendshape - 1, cast_shadow)
 		fur_object = _multimeshInstance
 
 
 func _delayed_position_correction() -> void:
 	# This is delayed because some transform correction appears to be called
-	# internally after _enter_tree and that overrides this value if it's not 
+	# internally after _enter_tree and that overrides this value if it's not
 	# delayed
 	yield(get_tree().create_timer(0.1), "timeout")
 	transform = Transform.IDENTITY

@@ -15,6 +15,6 @@ void fragment() {
 	NORMALMAP = textureLod(noiseNormal,UV,lod).xyz;
 	float mask = 1.0 - distance(UV,vec2(0.5));
 	
-	float noise = textureLod(noise1, UV + sin(TIME), noiseLod).r;
+	float noise = textureLod(noise1, UV, noiseLod).r;
 	ALPHA = mask*noise;
 }

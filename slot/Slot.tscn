@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://slot/SlotSelectionBody.gd" type="Script" id=1]
+[ext_resource path="res://slot/Slot.gd" type="Script" id=2]
+[ext_resource path="res://characters/KatsukiBakugo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/MainGUI3D.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 4.4639
+height = 16.7426
+
+[node name="Slot" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="MainGUI3D" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.116216, 26.2, 4.84383 )
+disabled = true
+
+[node name="CharacterContainer" type="Spatial" parent="."]
+
+[node name="KatsukiBakugo" parent="CharacterContainer" instance=ExtResource( 3 )]
+expressions = {
+"angry": 15
+}
+
+[node name="SlotSelectionBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.9364, 0 )
+collision_layer = 262144
+collision_mask = 262144
+script = ExtResource( 1 )
+gui_3d = NodePath("../MainGUI3D")
+
+[node name="CollisionShape" type="CollisionShape" parent="SlotSelectionBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )

@@ -1,0 +1,19 @@
+[gd_resource type="CapsuleMesh" load_steps=3 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode unshaded;
+
+void vertex(){
+	VERTEX *= 1.7;
+	VERTEX.z += 0.2;
+	VERTEX.y -= 0.2;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[resource]
+material = SubResource( 2 )
+radius = 0.1
+mid_height = 0.01

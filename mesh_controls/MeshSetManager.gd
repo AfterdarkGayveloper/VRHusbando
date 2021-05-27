@@ -12,11 +12,7 @@ func _ready():
 
 	update_penis_physics()
 
-	UIEvents.connect("clothes_changed", self, "_on_clothes_changed")
-
-	UIEvents.update_clothes_list(mesh_arr)
-
-func _on_clothes_changed(index, toggled):
+func change_clothes(index, toggled):
 	mesh_arr[index].toggle_visibility(toggled)
 	update_penis_physics()
 

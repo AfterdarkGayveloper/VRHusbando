@@ -113,4 +113,4 @@ nodes/TriggerAnimation/position = Vector2( 820, 260 )
 nodes/TriggerBlend/node = SubResource( 21 )
 nodes/TriggerBlend/position = Vector2( 820, 80 )
 nodes/output/position = Vector2( 1500, 80 )
-node_connections = [ "output", 0, "ThumbstickBlend", "MenuBlend", 0, "TriggerBlend", "MenuBlend", 1, "MenuAnimation", "GripBlend", 0, "BBlend", "GripBlend", 1, "GripAnimation", "ThumbstickBlend", 0, "MenuBlend", "ThumbstickBlend", 1, "ThumbstickBlendSpace", "TriggerBlend", 0, "GripBlend", "TriggerBlend", 1, "TriggerAnimation", "ABlend", 0, "IdleAnimation", "ABlend", 1, "AAnimation", "BBlend", 0, "ABlend", "BBlend", 1, "BAnimation" ]
+node_connections = [ "output", 0, "ThumbstickBlend", "GripBlend", 0, "BBlend", "GripBlend", 1, "GripAnimation", "ThumbstickBlend", 0, "MenuBlend", "ThumbstickBlend", 1, "ThumbstickBlendSpace", "MenuBlend", 0, "TriggerBlend", "MenuBlend", 1, "MenuAnimation", "TriggerBlend", 0, "GripBlend", "TriggerBlend", 1, "TriggerAnimation", "ABlend", 0, "IdleAnimation", "ABlend", 1, "AAnimation", "BBlend", 0, "ABlend", "BBlend", 1, "BAnimation" ]

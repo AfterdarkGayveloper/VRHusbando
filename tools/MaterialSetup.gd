@@ -2,7 +2,7 @@ tool
 extends EditorScript
 
 func _run():
-	var path = "res://mesh/school_crafts/"
+	var path = "res://mesh/shoto_todoroki/"
 	get_files_in_directory(path, ".material", funcref(self, "_process_material"))
 
 func _process_material(path : String):

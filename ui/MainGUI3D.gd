@@ -3,7 +3,11 @@ extends Panel3D
 export (OVRInput.DeviceID) var device_id = OVRInput.LEFT_DEVICE_ID
 export (OVRInput.Buttons) var button = OVRInput.TRIGGER_BUTTON
 
+var is_selected = false
+
 func _input(event):
+	if not is_selected:
+		return
 	if event is InputEventJoypadButton:
 		if not event.device == device_id:
 			return

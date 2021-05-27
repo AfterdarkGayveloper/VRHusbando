@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/screen/GUIBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/screen/MiscMenu.gd" type="Script" id=2]
+[ext_resource path="res://ui/screen/SlotMenu.gd" type="Script" id=2]
 
-[node name="MiscMenu" instance=ExtResource( 1 )]
+[node name="SlotMenu" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="VSeparator" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="0"]
@@ -16,7 +16,7 @@ margin_right = 19.0
 [node name="TittleLabel" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="2"]
 margin_left = 23.0
 margin_right = 377.0
-text = "Misc"
+text = "Slot"
 
 [node name="CloseButton" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="3"]
 margin_left = 381.0
@@ -24,3 +24,15 @@ margin_right = 400.0
 
 [node name="VSeparator2" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="4"]
 visible = false
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" index="0"]
+margin_left = 150.0
+margin_right = 260.0
+
+[node name="RightSlotButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="0"]
+margin_right = 110.0
+margin_bottom = 36.0
+toggle_mode = true
+text = "Right Slot"
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/RightSlotButton" to="." method="_on_RightSlotButton_toggled"]

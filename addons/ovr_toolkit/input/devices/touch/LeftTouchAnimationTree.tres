@@ -113,4 +113,4 @@ nodes/YAnimation/position = Vector2( 440, 260 )
 nodes/YBlend/node = SubResource( 21 )
 nodes/YBlend/position = Vector2( 440, 80 )
 nodes/output/position = Vector2( 1500, 80 )
-node_connections = [ "output", 0, "ThumbstickBlend", "MenuBlend", 0, "TriggerBlend", "MenuBlend", 1, "MenuAnimation", "GripBlend", 0, "YBlend", "GripBlend", 1, "GripAnimation", "ThumbstickBlend", 0, "MenuBlend", "ThumbstickBlend", 1, "ThumbstickBlendSpace", "TriggerBlend", 0, "GripBlend", "TriggerBlend", 1, "TriggerAnimation", "XBlend", 0, "IdleAnimation", "XBlend", 1, "XAnimation", "YBlend", 0, "XBlend", "YBlend", 1, "YAnimation" ]
+node_connections = [ "output", 0, "ThumbstickBlend", "GripBlend", 0, "YBlend", "GripBlend", 1, "GripAnimation", "ThumbstickBlend", 0, "MenuBlend", "ThumbstickBlend", 1, "ThumbstickBlendSpace", "MenuBlend", 0, "TriggerBlend", "MenuBlend", 1, "MenuAnimation", "TriggerBlend", 0, "GripBlend", "TriggerBlend", 1, "TriggerAnimation", "YBlend", 0, "XBlend", "YBlend", 1, "YAnimation", "XBlend", 0, "IdleAnimation", "XBlend", 1, "XAnimation" ]

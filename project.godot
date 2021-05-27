@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://animation_tree_controllers/AnimationTreeBlendControllerTimer.gd"
 }, {
+"base": "Spatial",
+"class": "Character",
+"language": "GDScript",
+"path": "res://characters/Character.gd"
+}, {
 "base": "PanelContainer",
 "class": "GUIBase",
 "language": "GDScript",
@@ -52,7 +57,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "MeshSet",
 "language": "GDScript",
-"path": "res://characters/MeshSet.gd"
+"path": "res://mesh_controls/MeshSet.gd"
 }, {
 "base": "Node",
 "class": "OVRInput",
@@ -68,10 +73,16 @@ _global_script_classes=[ {
 "class": "Panel3D",
 "language": "GDScript",
 "path": "res://addons/ovr_toolkit/ui/panel_3d/Panel3D.gd"
+}, {
+"base": "StaticBody",
+"class": "SlotSelectionBody",
+"language": "GDScript",
+"path": "res://slot/SlotSelectionBody.gd"
 } ]
 _global_script_class_icons={
 "AnimationTreeBlendController": "",
 "AnimationTreeBlendControllerTimer": "",
+"Character": "",
 "GUIBase": "",
 "GUIRayCast": "",
 "Grabbable": "",
@@ -81,7 +92,8 @@ _global_script_class_icons={
 "MeshSet": "",
 "OVRInput": "",
 "OVRInterface": "",
-"Panel3D": ""
+"Panel3D": "",
+"SlotSelectionBody": ""
 }
 
 [application]
@@ -96,7 +108,7 @@ UIEvents="*res://ui/autoload/UIEvents.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/animation_retargeting/plugin.cfg", "res://addons/shell_fur/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/shell_fur/plugin.cfg" )
 
 [gdnative]
 

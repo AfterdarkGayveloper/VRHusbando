@@ -1,11 +1,12 @@
 extends GUIBase
 
+const NONE_TEXT = "None"
+
 onready var container = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
 
-func _ready():
-	UIEvents.connect("character_list_updated", self, "_on_character_list_updated")
+signal character_selected
 
-func _on_character_list_updated(character_list : Array):
+func update_character_list(character_list : Array):
 	for child in container.get_children():
 		child.queue_free()
 
@@ -17,4 +18,4 @@ func _on_character_list_updated(character_list : Array):
 		container.add_child(button)
 
 func _on_CharacterButton_pressed(path):
-	UIEvents.select_character(path)
+	emit_signal("character_selected", path)

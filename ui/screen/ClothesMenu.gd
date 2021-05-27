@@ -4,10 +4,9 @@ onready var container = $MarginContainer/VBoxContainer/ScrollContainer/VBoxConta
 
 var current_mesh_arr : Array = []
 
-func _ready():
-	UIEvents.connect("clothes_list_updated", self, "_on_clothes_list_updated")
+signal clothes_changed(index, is_toggled)
 
-func _on_clothes_list_updated(mesh_arr):
+func update_clothes_list(mesh_arr):
 	current_mesh_arr = mesh_arr
 	for child in container.get_children():
 		child.queue_free()
@@ -22,7 +21,7 @@ func _on_clothes_list_updated(mesh_arr):
 		container.add_child(button)
 
 func _on_ClothesButton_button_up(index):
-	UIEvents.change_clothes(index, container.get_child(index).pressed)
+	emit_signal("clothes_changed", index, container.get_child(index).pressed)
 
 	for i in current_mesh_arr.size():
 		container.get_child(i).pressed = current_mesh_arr[i].visible

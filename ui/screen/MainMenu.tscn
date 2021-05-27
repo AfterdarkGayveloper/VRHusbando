@@ -59,10 +59,18 @@ action_mode = 0
 text = "Misc"
 flat = true
 
-[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="3"]
+[node name="SlotButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="3"]
 margin_top = 120.0
 margin_right = 406.0
 margin_bottom = 156.0
+action_mode = 0
+text = "Slot"
+flat = true
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="4"]
+margin_top = 160.0
+margin_right = 406.0
+margin_bottom = 196.0
 action_mode = 0
 text = "Credits"
 flat = true

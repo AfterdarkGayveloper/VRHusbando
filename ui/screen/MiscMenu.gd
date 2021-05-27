@@ -1,20 +1,28 @@
 extends GUIBase
 
-onready var hard_toggle = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HardButton
-onready var stare_toggle = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/StareButton
-onready var thrust_toggle = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ThrustButton
+onready var container = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
 
-func _ready():
-	UIEvents.connect("hard_toggled_updated", self, "_on_hard_toggled_updated")
+var buttons : Dictionary = {}
 
-func _on_hard_toggled_updated():
-	hard_toggle.pressed = true
+signal misc_selected(key, is_toggled)
 
-func _on_HardButton_button_up():
-	UIEvents.toggle_hard(hard_toggle.pressed)
+func update_misc_list(misc_list):
+	buttons.clear()
+	for child in container.get_children():
+		child.queue_free()
 
-func _on_StareButton_button_up():
-	UIEvents.toggle_stare(stare_toggle.pressed)
+	for option_name in misc_list:
+		var key = misc_list[option_name]
+		buttons[key] = Button.new()
+		buttons[key].text = option_name.capitalize()
+		buttons[key].action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
+		buttons[key].toggle_mode = true
+		buttons[key].connect("pressed", self, "_on_MiscButton_pressed", [key])
+		container.add_child(buttons[key])
 
-func _on_ThrustButton_button_up():
-	UIEvents.toggle_thrust(thrust_toggle.pressed)
+func update_misc_state(key, is_pressed):
+	buttons[key].pressed = is_pressed
+
+func _on_MiscButton_pressed(key):
+	emit_signal("misc_selected", key, buttons[key].pressed)
+

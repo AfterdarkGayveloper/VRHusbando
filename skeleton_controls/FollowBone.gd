@@ -34,10 +34,7 @@ func _ready():
 		var vector_forward = -bone_transf_rest_world.basis.xform(bone_forward_local).normalized()
 		relative_offset = (bone_transf_world.origin - vector_forward) - (target.global_transform.origin+target_offset)
 
-	if type == Type.STARE:
-		UIEvents.connect("stare_toggled", self, "_on_toggle_toggled")
-
-func _on_toggle_toggled(is_toggled):
+func toggle(is_toggled):
 	if is_toggled:
 		enable()
 	else:

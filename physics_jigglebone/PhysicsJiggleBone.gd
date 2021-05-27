@@ -22,7 +22,7 @@ var skeleton : Skeleton
 var current_scale = Vector3.ONE
 
 # Rest length of the distance constraint
-var rest_length = 1
+var rest_length = 0.8
 
 func _ready():
 	set_as_toplevel(true)
@@ -35,6 +35,8 @@ func _ready():
 	var shape : CapsuleShape = shape_owner_get_shape(0, 0)
 	default_shape_radius = shape.radius
 	default_shape_height = shape.height
+
+	shape.resource_local_to_scene = true
 
 func set_shape_disabled(is_disabled):
 	shape_owner_set_disabled(0, is_disabled)
@@ -105,7 +107,7 @@ func _process(delta):
 	if use_gravity:
 		grav = gravity
 
-	_update_shape_origin()
+#	_update_shape_origin()
 
 	grav *= stiffness
 	vel += grav

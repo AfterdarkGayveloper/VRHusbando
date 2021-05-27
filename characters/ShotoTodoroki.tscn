@@ -1,0 +1,190 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://mesh/shoto_todoroki/ShotoTodoroki.glb" type="PackedScene" id=1]
+[ext_resource path="res://characters/PenisTypeA.tscn" type="PackedScene" id=2]
+[ext_resource path="res://skeleton_controls/FollowBone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mesh/shoto_todoroki/Genitals.material" type="Material" id=4]
+[ext_resource path="res://characters/Character.gd" type="Script" id=5]
+[ext_resource path="res://mesh_controls/MeshSetManager.gd" type="Script" id=6]
+[ext_resource path="res://animation_tree_controllers/AnimationTreeStateMachineController.tscn" type="PackedScene" id=7]
+[ext_resource path="res://animation_tree_controllers/AnimationTreeBlendControllerTimer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://animation_tree_controllers/AnimationTreeBlendController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://mesh_controls/MeshSet.gd" type="Script" id=10]
+[ext_resource path="res://animation_tree_controllers/AnimationTreeControllerTimeScale.tscn" type="PackedScene" id=11]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "hip-thrust-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "blink"
+
+[sub_resource type="AnimationNodeBlend2" id=3]
+filter_enabled = true
+filters = [ "katsuki bakugoqc_skeleton/Skeleton:LI eyelid", "katsuki bakugoqc_skeleton/Skeleton:LO eyelid", "katsuki bakugoqc_skeleton/Skeleton:LT eyelid A", "katsuki bakugoqc_skeleton/Skeleton:LT eyelid B", "katsuki bakugoqc_skeleton/Skeleton:LT eyelid C", "katsuki bakugoqc_skeleton/Skeleton:LT eyelid D", "katsuki bakugoqc_skeleton/Skeleton:LU eyelid A", "katsuki bakugoqc_skeleton/Skeleton:LU eyelid B", "katsuki bakugoqc_skeleton/Skeleton:LU eyelid C", "katsuki bakugoqc_skeleton/Skeleton:LU eyelid D", "katsuki bakugoqc_skeleton/Skeleton:RI eyelid", "katsuki bakugoqc_skeleton/Skeleton:RO eyelid", "katsuki bakugoqc_skeleton/Skeleton:RT eyelid A", "katsuki bakugoqc_skeleton/Skeleton:RT eyelid B", "katsuki bakugoqc_skeleton/Skeleton:RT eyelid C", "katsuki bakugoqc_skeleton/Skeleton:RT eyelid D", "katsuki bakugoqc_skeleton/Skeleton:RU eyelid A", "katsuki bakugoqc_skeleton/Skeleton:RU eyelid B", "katsuki bakugoqc_skeleton/Skeleton:RU eyelid C", "katsuki bakugoqc_skeleton/Skeleton:RU eyelid D", "shoto todorokiqc_skeleton/Skeleton:head eyelid left inner", "shoto todorokiqc_skeleton/Skeleton:head eyelid left lower 1", "shoto todorokiqc_skeleton/Skeleton:head eyelid left lower 2", "shoto todorokiqc_skeleton/Skeleton:head eyelid left lower 3", "shoto todorokiqc_skeleton/Skeleton:head eyelid left lower 4", "shoto todorokiqc_skeleton/Skeleton:head eyelid left outer", "shoto todorokiqc_skeleton/Skeleton:head eyelid left upper 1", "shoto todorokiqc_skeleton/Skeleton:head eyelid left upper 2", "shoto todorokiqc_skeleton/Skeleton:head eyelid left upper 3", "shoto todorokiqc_skeleton/Skeleton:head eyelid left upper 4", "shoto todorokiqc_skeleton/Skeleton:head eyelid right inner", "shoto todorokiqc_skeleton/Skeleton:head eyelid right lower 1", "shoto todorokiqc_skeleton/Skeleton:head eyelid right lower 2", "shoto todorokiqc_skeleton/Skeleton:head eyelid right lower 3", "shoto todorokiqc_skeleton/Skeleton:head eyelid right lower 4", "shoto todorokiqc_skeleton/Skeleton:head eyelid right outer", "shoto todorokiqc_skeleton/Skeleton:head eyelid right upper 1", "shoto todorokiqc_skeleton/Skeleton:head eyelid right upper 2", "shoto todorokiqc_skeleton/Skeleton:head eyelid right upper 3", "shoto todorokiqc_skeleton/Skeleton:head eyelid right upper 4" ]
+
+[sub_resource type="AnimationNodeBlend2" id=4]
+filter_enabled = true
+filters = [ "katsuki bakugoqc_skeleton/Skeleton:L browskin A", "katsuki bakugoqc_skeleton/Skeleton:L browskin B", "katsuki bakugoqc_skeleton/Skeleton:L browskin C", "katsuki bakugoqc_skeleton/Skeleton:L browskin D", "katsuki bakugoqc_skeleton/Skeleton:L browskin E", "katsuki bakugoqc_skeleton/Skeleton:L cheek A", "katsuki bakugoqc_skeleton/Skeleton:L cheek B", "katsuki bakugoqc_skeleton/Skeleton:L cheek C", "katsuki bakugoqc_skeleton/Skeleton:L cheek D", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow A", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow B", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow C", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow D", "katsuki bakugoqc_skeleton/Skeleton:L eyebrow E", "katsuki bakugoqc_skeleton/Skeleton:LT lip A", "katsuki bakugoqc_skeleton/Skeleton:LT lip B", "katsuki bakugoqc_skeleton/Skeleton:LT lip C", "katsuki bakugoqc_skeleton/Skeleton:LT lip D", "katsuki bakugoqc_skeleton/Skeleton:LU lip A", "katsuki bakugoqc_skeleton/Skeleton:LU lip B", "katsuki bakugoqc_skeleton/Skeleton:LU lip C", "katsuki bakugoqc_skeleton/Skeleton:R browskin A", "katsuki bakugoqc_skeleton/Skeleton:R browskin B", "katsuki bakugoqc_skeleton/Skeleton:R browskin C", "katsuki bakugoqc_skeleton/Skeleton:R browskin D", "katsuki bakugoqc_skeleton/Skeleton:R browskin E", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow A", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow B", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow C", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow D", "katsuki bakugoqc_skeleton/Skeleton:R eyebrow E", "katsuki bakugoqc_skeleton/Skeleton:RT lip A", "katsuki bakugoqc_skeleton/Skeleton:RT lip B", "katsuki bakugoqc_skeleton/Skeleton:RT lip C", "katsuki bakugoqc_skeleton/Skeleton:RT lip D", "katsuki bakugoqc_skeleton/Skeleton:RU lip A", "katsuki bakugoqc_skeleton/Skeleton:RU lip B", "katsuki bakugoqc_skeleton/Skeleton:RU lip C", "katsuki bakugoqc_skeleton/Skeleton:T lip", "katsuki bakugoqc_skeleton/Skeleton:U lip", "katsuki bakugoqc_skeleton/Skeleton:U teeth", "shoto todorokiqc_skeleton/Skeleton:L cheek C", "shoto todorokiqc_skeleton/Skeleton:LT lip A", "shoto todorokiqc_skeleton/Skeleton:LT lip B", "shoto todorokiqc_skeleton/Skeleton:LT lip C", "shoto todorokiqc_skeleton/Skeleton:LT lip D", "shoto todorokiqc_skeleton/Skeleton:LU lip A", "shoto todorokiqc_skeleton/Skeleton:LU lip B", "shoto todorokiqc_skeleton/Skeleton:LU lip C", "shoto todorokiqc_skeleton/Skeleton:R cheek C", "shoto todorokiqc_skeleton/Skeleton:RT lip A", "shoto todorokiqc_skeleton/Skeleton:RT lip B", "shoto todorokiqc_skeleton/Skeleton:RT lip C", "shoto todorokiqc_skeleton/Skeleton:RT lip D", "shoto todorokiqc_skeleton/Skeleton:RU lip A", "shoto todorokiqc_skeleton/Skeleton:RU lip B", "shoto todorokiqc_skeleton/Skeleton:RU lip C", "shoto todorokiqc_skeleton/Skeleton:T lip", "shoto todorokiqc_skeleton/Skeleton:U lip", "shoto todorokiqc_skeleton/Skeleton:head cheek left 1", "shoto todorokiqc_skeleton/Skeleton:head cheek left 2", "shoto todorokiqc_skeleton/Skeleton:head cheek left 4", "shoto todorokiqc_skeleton/Skeleton:head cheek right 1", "shoto todorokiqc_skeleton/Skeleton:head cheek right 2", "shoto todorokiqc_skeleton/Skeleton:head cheek right 4", "shoto todorokiqc_skeleton/Skeleton:head eyeball left", "shoto todorokiqc_skeleton/Skeleton:head eyeball right", "shoto todorokiqc_skeleton/Skeleton:head eyebrow left 1", "shoto todorokiqc_skeleton/Skeleton:head eyebrow left 2", "shoto todorokiqc_skeleton/Skeleton:head eyebrow left 3", "shoto todorokiqc_skeleton/Skeleton:head eyebrow left 4", "shoto todorokiqc_skeleton/Skeleton:head eyebrow left 5", "shoto todorokiqc_skeleton/Skeleton:head eyebrow right 1", "shoto todorokiqc_skeleton/Skeleton:head eyebrow right 2", "shoto todorokiqc_skeleton/Skeleton:head eyebrow right 3", "shoto todorokiqc_skeleton/Skeleton:head eyebrow right 4", "shoto todorokiqc_skeleton/Skeleton:head eyebrow right 5", "shoto todorokiqc_skeleton/Skeleton:head eyebrows", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin left 1", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin left 2", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin left 3", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin left 4", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin left 5", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin right 1", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin right 2", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin right 3", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin right 4", "shoto todorokiqc_skeleton/Skeleton:head eyebrowskin right 5", "shoto todorokiqc_skeleton/Skeleton:head eyelid left inner", "shoto todorokiqc_skeleton/Skeleton:head eyelid left lower 1", "shoto todorokiqc_skeleton/Skeleton:head eyelid left lower 2", "shoto todorokiqc_skeleton/Skeleton:head eyelid left lower 3", "shoto todorokiqc_skeleton/Skeleton:head eyelid left lower 4", "shoto todorokiqc_skeleton/Skeleton:head eyelid left outer", "shoto todorokiqc_skeleton/Skeleton:head eyelid left upper 1", "shoto todorokiqc_skeleton/Skeleton:head eyelid left upper 2", "shoto todorokiqc_skeleton/Skeleton:head eyelid left upper 3", "shoto todorokiqc_skeleton/Skeleton:head eyelid left upper 4", "shoto todorokiqc_skeleton/Skeleton:head eyelid right inner", "shoto todorokiqc_skeleton/Skeleton:head eyelid right lower 1", "shoto todorokiqc_skeleton/Skeleton:head eyelid right lower 2", "shoto todorokiqc_skeleton/Skeleton:head eyelid right lower 3", "shoto todorokiqc_skeleton/Skeleton:head eyelid right lower 4", "shoto todorokiqc_skeleton/Skeleton:head eyelid right outer", "shoto todorokiqc_skeleton/Skeleton:head eyelid right upper 1", "shoto todorokiqc_skeleton/Skeleton:head eyelid right upper 2", "shoto todorokiqc_skeleton/Skeleton:head eyelid right upper 3", "shoto todorokiqc_skeleton/Skeleton:head eyelid right upper 4", "shoto todorokiqc_skeleton/Skeleton:head jaw", "shoto todorokiqc_skeleton/Skeleton:head jaw teeth lower", "shoto todorokiqc_skeleton/Skeleton:head jaw teeth upper", "shoto todorokiqc_skeleton/Skeleton:head jaw tongue 1", "shoto todorokiqc_skeleton/Skeleton:head jaw tongue 2", "shoto todorokiqc_skeleton/Skeleton:head nose" ]
+
+[sub_resource type="AnimationNodeStateMachine" id=5]
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=7]
+filter_enabled = true
+filters = [ "katsuki bakugoqc_skeleton/Skeleton:BK L knee 00", "katsuki bakugoqc_skeleton/Skeleton:BK L knee 01", "katsuki bakugoqc_skeleton/Skeleton:BK L knee 02", "katsuki bakugoqc_skeleton/Skeleton:BK L knee 03", "katsuki bakugoqc_skeleton/Skeleton:BK R knee 00", "katsuki bakugoqc_skeleton/Skeleton:BK R knee 01", "katsuki bakugoqc_skeleton/Skeleton:BK R knee 02", "katsuki bakugoqc_skeleton/Skeleton:BK R knee 03", "katsuki bakugoqc_skeleton/Skeleton:COG", "katsuki bakugoqc_skeleton/Skeleton:L knee EX", "katsuki bakugoqc_skeleton/Skeleton:L leg EX", "katsuki bakugoqc_skeleton/Skeleton:R knee EX", "katsuki bakugoqc_skeleton/Skeleton:R leg EX", "katsuki bakugoqc_skeleton/Skeleton:bip_foot_L", "katsuki bakugoqc_skeleton/Skeleton:bip_foot_R", "katsuki bakugoqc_skeleton/Skeleton:bip_hip_L", "katsuki bakugoqc_skeleton/Skeleton:bip_hip_R", "katsuki bakugoqc_skeleton/Skeleton:bip_hips", "katsuki bakugoqc_skeleton/Skeleton:bip_knee_L", "katsuki bakugoqc_skeleton/Skeleton:bip_knee_R", "katsuki bakugoqc_skeleton/Skeleton:bip_pelvis", "katsuki bakugoqc_skeleton/Skeleton:bip_spine_0", "katsuki bakugoqc_skeleton/Skeleton:bip_toe_L", "katsuki bakugoqc_skeleton/Skeleton:bip_toe_R", "shoto todorokiqc_skeleton/Skeleton:BK L ankle 00", "shoto todorokiqc_skeleton/Skeleton:BK L ankle 01", "shoto todorokiqc_skeleton/Skeleton:BK L ankle 02", "shoto todorokiqc_skeleton/Skeleton:BK L ankle 03", "shoto todorokiqc_skeleton/Skeleton:BK L ankle 04", "shoto todorokiqc_skeleton/Skeleton:BK L knee 00", "shoto todorokiqc_skeleton/Skeleton:BK L knee 01", "shoto todorokiqc_skeleton/Skeleton:BK L knee 02", "shoto todorokiqc_skeleton/Skeleton:BK L knee 03", "shoto todorokiqc_skeleton/Skeleton:BK R ankle 00", "shoto todorokiqc_skeleton/Skeleton:BK R ankle 01", "shoto todorokiqc_skeleton/Skeleton:BK R ankle 02", "shoto todorokiqc_skeleton/Skeleton:BK R ankle 03", "shoto todorokiqc_skeleton/Skeleton:BK R ankle 04", "shoto todorokiqc_skeleton/Skeleton:BK R knee 00", "shoto todorokiqc_skeleton/Skeleton:BK R knee 01", "shoto todorokiqc_skeleton/Skeleton:BK R knee 02", "shoto todorokiqc_skeleton/Skeleton:BK R knee 03", "shoto todorokiqc_skeleton/Skeleton:COG", "shoto todorokiqc_skeleton/Skeleton:L ankle EX", "shoto todorokiqc_skeleton/Skeleton:L knee EX", "shoto todorokiqc_skeleton/Skeleton:L leg EX", "shoto todorokiqc_skeleton/Skeleton:R ankle EX", "shoto todorokiqc_skeleton/Skeleton:R knee EX", "shoto todorokiqc_skeleton/Skeleton:R leg EX", "shoto todorokiqc_skeleton/Skeleton:bip_foot_L", "shoto todorokiqc_skeleton/Skeleton:bip_foot_R", "shoto todorokiqc_skeleton/Skeleton:bip_hip_L", "shoto todorokiqc_skeleton/Skeleton:bip_hip_R", "shoto todorokiqc_skeleton/Skeleton:bip_hips", "shoto todorokiqc_skeleton/Skeleton:bip_knee_L", "shoto todorokiqc_skeleton/Skeleton:bip_knee_R", "shoto todorokiqc_skeleton/Skeleton:bip_pelvis", "shoto todorokiqc_skeleton/Skeleton:bip_spine_0", "shoto todorokiqc_skeleton/Skeleton:bip_toe_L", "shoto todorokiqc_skeleton/Skeleton:bip_toe_R" ]
+
+[sub_resource type="AnimationNodeTimeScale" id=8]
+
+[sub_resource type="AnimationNodeBlendTree" id=9]
+graph_offset = Vector2( -182, -129 )
+nodes/Animation/node = SubResource( 1 )
+nodes/Animation/position = Vector2( 200, 260 )
+nodes/blink/node = SubResource( 2 )
+nodes/blink/position = Vector2( 700, 140 )
+nodes/blink_blend/node = SubResource( 3 )
+nodes/blink_blend/position = Vector2( 700, -40 )
+nodes/expression_blend/node = SubResource( 4 )
+nodes/expression_blend/position = Vector2( 460, -40 )
+nodes/expression_state_machine/node = SubResource( 5 )
+nodes/expression_state_machine/position = Vector2( 420, 160 )
+nodes/idle/node = SubResource( 6 )
+nodes/idle/position = Vector2( -40, -20 )
+nodes/output/position = Vector2( 920, -40 )
+nodes/thrust_blend/node = SubResource( 7 )
+nodes/thrust_blend/position = Vector2( 200, -40 )
+nodes/thrust_time_scale/node = SubResource( 8 )
+nodes/thrust_time_scale/position = Vector2( 200, 140 )
+node_connections = [ "output", 0, "blink_blend", "thrust_blend", 0, "idle", "thrust_blend", 1, "thrust_time_scale", "thrust_time_scale", 0, "Animation", "blink_blend", 0, "expression_blend", "blink_blend", 1, "blink", "expression_blend", 0, "thrust_blend", "expression_blend", 1, "expression_state_machine" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+
+[node name="ShotoTodoroki" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+penis = NodePath("shoto todorokiqc_skeleton/Skeleton/PenisBoneAttachment/PenisTypeA")
+
+[node name="shoto todorokiqc_skeleton" parent="." index="0"]
+transform = Transform( 0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 0, 1.348, 1.651 )
+
+[node name="BodyHeroPants" parent="shoto todorokiqc_skeleton/Skeleton" index="0" groups=[
+"Body",
+]]
+visible = false
+script = ExtResource( 10 )
+mesh_name = "Hero Pants"
+default_mesh_path = NodePath("../NakedBody")
+has_penis = false
+
+[node name="BodyHeroPantsDown" parent="shoto todorokiqc_skeleton/Skeleton" index="1" groups=[
+"Body",
+]]
+visible = false
+script = ExtResource( 10 )
+mesh_name = "Hero Pants Down"
+default_mesh_path = NodePath("../NakedBody")
+
+[node name="BodyUAPants" parent="shoto todorokiqc_skeleton/Skeleton" index="2" groups=[
+"Body",
+]]
+script = ExtResource( 10 )
+mesh_name = "UA Pants"
+default_mesh_path = NodePath("../NakedBody")
+has_penis = false
+
+[node name="BodyUAPantsDown" parent="shoto todorokiqc_skeleton/Skeleton" index="3" groups=[
+"Body",
+]]
+visible = false
+script = ExtResource( 10 )
+mesh_name = "UA Pants Down"
+default_mesh_path = NodePath("../NakedBody")
+
+[node name="Genitals" parent="shoto todorokiqc_skeleton/Skeleton" index="4"]
+visible = false
+
+[node name="HeroShirt" parent="shoto todorokiqc_skeleton/Skeleton" index="5" groups=[
+"Shirt",
+]]
+visible = false
+script = ExtResource( 10 )
+mesh_name = "Hero Shirt"
+
+[node name="NakedBody" parent="shoto todorokiqc_skeleton/Skeleton" index="6" groups=[
+"Body",
+]]
+visible = false
+
+[node name="UAShirt" parent="shoto todorokiqc_skeleton/Skeleton" index="7" groups=[
+"Shirt",
+]]
+script = ExtResource( 10 )
+mesh_name = "UA Shirt"
+
+[node name="PenisBoneAttachment" type="BoneAttachment" parent="shoto todorokiqc_skeleton/Skeleton" index="8"]
+transform = Transform( -1, 1.25567e-06, -6.91408e-07, -6.91407e-07, 8.34465e-07, 1, 1.25567e-06, 1, -8.34464e-07, 3.78549e-06, 32.3282, -0.830004 )
+bone_name = "Dick base"
+
+[node name="PenisTypeA" parent="shoto todorokiqc_skeleton/Skeleton/PenisBoneAttachment" index="0" instance=ExtResource( 2 )]
+transform = Transform( -1.90476, 1.6652e-07, -3.63798e-12, -3.63798e-12, -8.32595e-08, 1.90476, 1.6652e-07, 1.90476, 8.32595e-08, 5.53302e-07, 0.133045, -0.563145 )
+material = ExtResource( 4 )
+soft_scale = Vector3( 0.4, 0.4, 0.4 )
+hard_stiffness = 2.3
+soft_stiffness = 0.1
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 9 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/blink_blend/blend_amount = 0.0
+parameters/expression_blend/blend_amount = 0
+parameters/expression_state_machine/playback = SubResource( 10 )
+parameters/thrust_blend/blend_amount = 0.0
+parameters/thrust_time_scale/scale = 1.0
+
+[node name="AnimationTreeControllers" type="Node" parent="." index="3"]
+
+[node name="BlinkController" parent="AnimationTreeControllers" index="0" instance=ExtResource( 9 )]
+animation_tree = NodePath("../../AnimationTree")
+param = "blink_blend"
+speed = 5.0
+
+[node name="BlendControllerTimer" parent="AnimationTreeControllers/BlinkController" index="0" instance=ExtResource( 8 )]
+
+[node name="TrustController" parent="AnimationTreeControllers" index="1" instance=ExtResource( 9 )]
+animation_tree = NodePath("../../AnimationTree")
+param = "thrust_blend"
+speed = 2.0
+
+[node name="TimescaleController" parent="AnimationTreeControllers/TrustController" index="0" instance=ExtResource( 11 )]
+animation_tree = NodePath("../../../AnimationTree")
+param = "thrust_time_scale"
+
+[node name="ExpressionController" parent="AnimationTreeControllers" index="2" instance=ExtResource( 7 )]
+state_machine = "expression_state_machine"
+animation_tree = NodePath("../../AnimationTree")
+
+[node name="BlendController" parent="AnimationTreeControllers/ExpressionController" index="0" instance=ExtResource( 9 )]
+animation_tree = NodePath("../../../AnimationTree")
+param = "expression_blend"
+speed = 2.0
+
+[node name="HeadFollowBone" parent="." index="4" instance=ExtResource( 3 )]
+skeleton = NodePath("../shoto todorokiqc_skeleton/Skeleton")
+group_name = "HeadTarget"
+bone_name = "bip_head"
+angle_limit = 0.5
+bone_forward_local = Vector3( 0, 1, 0 )
+
+[node name="NeckFollowBone" parent="." index="5" instance=ExtResource( 3 )]
+skeleton = NodePath("../shoto todorokiqc_skeleton/Skeleton")
+group_name = "NeckTarget"
+bone_name = "bip_neck"
+angle_limit = 0.5
+target_offset = Vector3( 0, -5, 0 )
+bone_forward_local = Vector3( 0, 0, 1 )
+
+[node name="MeshManager" type="Node" parent="." index="6"]
+script = ExtResource( 6 )
+mesh_path = [ NodePath("../shoto todorokiqc_skeleton/Skeleton/HeroShirt"), NodePath("../shoto todorokiqc_skeleton/Skeleton/BodyHeroPants"), NodePath("../shoto todorokiqc_skeleton/Skeleton/BodyHeroPantsDown"), NodePath("../shoto todorokiqc_skeleton/Skeleton/UAShirt"), NodePath("../shoto todorokiqc_skeleton/Skeleton/BodyUAPants"), NodePath("../shoto todorokiqc_skeleton/Skeleton/BodyUAPantsDown") ]
+penis = NodePath("../shoto todorokiqc_skeleton/Skeleton/PenisBoneAttachment/PenisTypeA")

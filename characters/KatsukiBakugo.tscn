@@ -1,27 +1,36 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://bone_utils/FollowBone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://skeleton_controls/FollowBone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://mesh/bakugo/Bakugo.glb" type="PackedScene" id=2]
 [ext_resource path="res://characters/PenisTypeA.tscn" type="PackedScene" id=3]
 [ext_resource path="res://mesh/bakugo/Genitals.material" type="Material" id=4]
 [ext_resource path="res://characters/Character.gd" type="Script" id=5]
-[ext_resource path="res://characters/MaterialSwitch.gd" type="Script" id=6]
+[ext_resource path="res://mesh_controls/MaterialSwitch.gd" type="Script" id=6]
 [ext_resource path="res://characters/AnimationTree.tres" type="AnimationNodeBlendTree" id=7]
 [ext_resource path="res://animation_tree_controllers/AnimationTreeBlendController.tscn" type="PackedScene" id=8]
 [ext_resource path="res://animation_tree_controllers/AnimationTreeStateMachineController.tscn" type="PackedScene" id=9]
-[ext_resource path="res://characters/MeshSetManager.gd" type="Script" id=11]
+[ext_resource path="res://animation_tree_controllers/AnimationTreeControllerTimeScale.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mesh_controls/MeshSetManager.gd" type="Script" id=11]
 [ext_resource path="res://mesh/bakugo/FaceMask.material" type="Material" id=12]
 [ext_resource path="res://mesh/bakugo/Face.material" type="Material" id=13]
-[ext_resource path="res://characters/MeshSet.gd" type="Script" id=14]
+[ext_resource path="res://mesh_controls/MeshSet.gd" type="Script" id=14]
 [ext_resource path="res://animation_tree_controllers/AnimationTreeBlendControllerTimer.tscn" type="PackedScene" id=15]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="KatsukiBakugo" instance=ExtResource( 2 )]
 script = ExtResource( 5 )
+nude_expression = "angry"
+expressions = {
+"angry": 15
+}
+penis = NodePath("katsuki bakugoqc_skeleton/Skeleton/PenisBoneAttachment/PenisTypeA")
 
 [node name="katsuki bakugoqc_skeleton" parent="." index="0"]
-transform = Transform( 0.53, 0, 0, 0, 0.53, 0, 0, 0, 0.53, 0, 0, 0 )
+transform = Transform( 0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 0, 0.35, 0 )
+
+[node name="Skeleton" parent="katsuki bakugoqc_skeleton" index="0"]
+bones/151/bound_children = [ NodePath("PenisBoneAttachment") ]
 
 [node name="Arms" parent="katsuki bakugoqc_skeleton/Skeleton" index="0" groups=[
 "Arms",
@@ -113,10 +122,12 @@ mesh_path = [ NodePath("../BodyNaked"), NodePath("../BodyPants"), NodePath("../B
 transform = Transform( -1, 1.25567e-06, 3.25839e-07, 3.2584e-07, 2.98023e-07, 1, 1.25567e-06, 1, -4.17233e-07, 3.64484e-06, 33.298, 2.23377 )
 bone_name = "Dick base"
 
-[node name="RemoteTransform" type="RemoteTransform" parent="katsuki bakugoqc_skeleton/Skeleton/PenisBoneAttachment" index="0"]
-transform = Transform( -2, 6.51679e-07, 2.51104e-06, 2.51104e-06, 8.34464e-07, 2, 6.51678e-07, 2, -5.96047e-07, 1.17981e-07, 0.268054, -0.671005 )
-remote_path = NodePath("../../../../PenisTypeA")
-update_scale = false
+[node name="PenisTypeA" parent="katsuki bakugoqc_skeleton/Skeleton/PenisBoneAttachment" index="0" instance=ExtResource( 3 )]
+transform = Transform( -1.90476, 6.20646e-07, 2.39147e-06, 2.39147e-06, 7.94729e-07, 1.90476, 6.20645e-07, 1.90476, -5.67665e-07, 1.1798e-07, 0.268054, -0.671005 )
+material = ExtResource( 4 )
+soft_scale = Vector3( 0.4, 0.4, 0.4 )
+hard_stiffness = 2.3
+soft_stiffness = 0.1
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = ExtResource( 7 )
@@ -142,6 +153,10 @@ animation_tree = NodePath("../../AnimationTree")
 param = "thrust_blend"
 speed = 2.0
 
+[node name="TimescaleController" parent="AnimationTreeControllers/TrustController" index="0" instance=ExtResource( 10 )]
+animation_tree = NodePath("../../../AnimationTree")
+param = "thrust_time_scale"
+
 [node name="ExpressionController" parent="AnimationTreeControllers" index="2" instance=ExtResource( 9 )]
 state_machine = "expression_state_machine"
 animation_tree = NodePath("../../AnimationTree")
@@ -151,21 +166,14 @@ animation_tree = NodePath("../../../AnimationTree")
 param = "expression_blend"
 speed = 2.0
 
-[node name="PenisTypeA" parent="." index="4" instance=ExtResource( 3 )]
-transform = Transform( 1, 4.02126e-13, 1.46295e-10, -4.02194e-13, 0.999831, 5.0936e-13, -1.4632e-10, -5.0936e-13, 0.999831, 1.93175e-06, 17.2923, 1.32597 )
-material = ExtResource( 4 )
-soft_scale = Vector3( 0.4, 0.4, 0.4 )
-hard_stiffness = 2.3
-soft_stiffness = 0.1
-
-[node name="HeadFollowBone" parent="." index="5" instance=ExtResource( 1 )]
+[node name="HeadFollowBone" parent="." index="4" instance=ExtResource( 1 )]
 skeleton = NodePath("../katsuki bakugoqc_skeleton/Skeleton")
 group_name = "HeadTarget"
 bone_name = "bip_head"
 angle_limit = 0.5
 bone_forward_local = Vector3( 0, 1, 0 )
 
-[node name="NeckFollowBone" parent="." index="6" instance=ExtResource( 1 )]
+[node name="NeckFollowBone" parent="." index="5" instance=ExtResource( 1 )]
 skeleton = NodePath("../katsuki bakugoqc_skeleton/Skeleton")
 group_name = "NeckTarget"
 bone_name = "bip_neck"
@@ -173,9 +181,7 @@ angle_limit = 0.5
 target_offset = Vector3( 0, -5, 0 )
 bone_forward_local = Vector3( 0, 0, 1 )
 
-[node name="MeshManager" type="Node" parent="." index="7"]
+[node name="MeshManager" type="Node" parent="." index="6"]
 script = ExtResource( 11 )
-mesh_path = [ NodePath("../katsuki bakugoqc_skeleton/Skeleton/HeadPiece"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/FaceMask"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/NeckPiece"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/Shirt"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/ShirtUA"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/Gloves"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/GrenadeGauntlets"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/BodyPants"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/BodyPantsUnzip"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/BodyPantsUA"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/BodyPantsDownUA") ]
-penis = NodePath("../PenisTypeA")
-
-[connection signal="touched" from="PenisTypeA" to="." method="_on_PenisTypeA_touched"]
+mesh_path = [ NodePath("../katsuki bakugoqc_skeleton/Skeleton/HeadPiece"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/FaceMask"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/NeckPiece"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/Gloves"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/GrenadeGauntlets"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/Shirt"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/BodyPants"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/BodyPantsUnzip"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/ShirtUA"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/BodyPantsUA"), NodePath("../katsuki bakugoqc_skeleton/Skeleton/BodyPantsDownUA") ]
+penis = NodePath("../katsuki bakugoqc_skeleton/Skeleton/PenisBoneAttachment/PenisTypeA")

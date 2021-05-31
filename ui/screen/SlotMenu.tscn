@@ -35,4 +35,12 @@ margin_bottom = 36.0
 toggle_mode = true
 text = "Right Slot"
 
+[node name="LeftSlotButton" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="1"]
+margin_top = 40.0
+margin_right = 110.0
+margin_bottom = 76.0
+toggle_mode = true
+text = "Left Slot"
+
 [connection signal="toggled" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/RightSlotButton" to="." method="_on_RightSlotButton_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/LeftSlotButton" to="." method="_on_LeftSlotButton_toggled"]

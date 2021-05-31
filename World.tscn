@@ -72,9 +72,8 @@ arvr_controller = NodePath("..")
 arvr_origin = NodePath("../..")
 
 [node name="SlotManager" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 script = ExtResource( 7 )
-character_list = [ "res://characters/KatsukiBakugo.tscn", "res://characters/ShotoTodoroki.tscn" ]
+character_list = [ "res://characters/KatsukiBakugo.tscn", "res://characters/ShotoTodoroki.tscn", "res://characters/IzukuMidoriya.tscn" ]
 slot_scene = ExtResource( 6 )
 
 [node name="MainSlot" parent="SlotManager" instance=ExtResource( 6 )]
@@ -98,7 +97,7 @@ light_energy = 0.2
 light_indirect_energy = 0.5
 
 [node name="Club2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 1.5, 0 )
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.9222, 18.8709, -8.27509 )

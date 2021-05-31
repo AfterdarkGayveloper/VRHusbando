@@ -56,7 +56,7 @@ nodes/thrust_blend/node = SubResource( 7 )
 nodes/thrust_blend/position = Vector2( 200, -40 )
 nodes/thrust_time_scale/node = SubResource( 8 )
 nodes/thrust_time_scale/position = Vector2( 200, 140 )
-node_connections = [ "output", 0, "blink_blend", "thrust_blend", 0, "idle", "thrust_blend", 1, "thrust_time_scale", "thrust_time_scale", 0, "Animation", "blink_blend", 0, "expression_blend", "blink_blend", 1, "blink", "expression_blend", 0, "thrust_blend", "expression_blend", 1, "expression_state_machine" ]
+node_connections = [ "output", 0, "blink_blend", "blink_blend", 0, "expression_blend", "blink_blend", 1, "blink", "expression_blend", 0, "thrust_blend", "expression_blend", 1, "expression_state_machine", "thrust_time_scale", 0, "Animation", "thrust_blend", 0, "idle", "thrust_blend", 1, "thrust_time_scale" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=10]
 
@@ -128,7 +128,8 @@ bone_name = "Dick base"
 [node name="PenisTypeA" parent="shoto todorokiqc_skeleton/Skeleton/PenisBoneAttachment" index="0" instance=ExtResource( 2 )]
 transform = Transform( -1.90476, 1.6652e-07, -3.63798e-12, -3.63798e-12, -8.32595e-08, 1.90476, 1.6652e-07, 1.90476, 8.32595e-08, 5.53302e-07, 0.133045, -0.563145 )
 material = ExtResource( 4 )
-soft_scale = Vector3( 0.4, 0.4, 0.4 )
+soft_scale = Vector3( 0.45, 0.45, 0.45 )
+hard_scale = Vector3( 1.05, 1.05, 1.05 )
 hard_stiffness = 2.3
 soft_stiffness = 0.1
 

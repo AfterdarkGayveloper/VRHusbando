@@ -27,10 +27,7 @@ expressions = {
 penis = NodePath("katsuki bakugoqc_skeleton/Skeleton/PenisBoneAttachment/PenisTypeA")
 
 [node name="katsuki bakugoqc_skeleton" parent="." index="0"]
-transform = Transform( 0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 0, 0.35, 0 )
-
-[node name="Skeleton" parent="katsuki bakugoqc_skeleton" index="0"]
-bones/151/bound_children = [ NodePath("PenisBoneAttachment") ]
+transform = Transform( 0.52, 0, 0, 0, 0.52, 0, 0, 0, 0.52, 0, 0.35, 0 )
 
 [node name="Arms" parent="katsuki bakugoqc_skeleton/Skeleton" index="0" groups=[
 "Arms",
@@ -123,7 +120,7 @@ transform = Transform( -1, 1.25567e-06, 3.25839e-07, 3.2584e-07, 2.98023e-07, 1,
 bone_name = "Dick base"
 
 [node name="PenisTypeA" parent="katsuki bakugoqc_skeleton/Skeleton/PenisBoneAttachment" index="0" instance=ExtResource( 3 )]
-transform = Transform( -1.90476, 6.20646e-07, 2.39147e-06, 2.39147e-06, 7.94729e-07, 1.90476, 6.20645e-07, 1.90476, -5.67665e-07, 1.1798e-07, 0.268054, -0.671005 )
+transform = Transform( -1.92307, 6.26614e-07, 2.41447e-06, 2.41446e-06, 8.0237e-07, 1.92308, 6.26613e-07, 1.92308, -5.73124e-07, -1.00299e-08, 0.14436, -0.479637 )
 material = ExtResource( 4 )
 soft_scale = Vector3( 0.4, 0.4, 0.4 )
 hard_stiffness = 2.3

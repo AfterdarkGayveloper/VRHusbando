@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/screen/GUIBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/screen/MiscMenu.gd" type="Script" id=2]
+[ext_resource path="res://ui/SliderContainer.tscn" type="PackedScene" id=3]
 
 [node name="MiscMenu" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -24,3 +25,42 @@ margin_right = 400.0
 
 [node name="VSeparator2" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxcontainer" index="4"]
 visible = false
+
+[node name="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" index="0"]
+margin_left = 55.0
+margin_right = 355.0
+
+[node name="ToggleContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="0"]
+margin_right = 300.0
+
+[node name="HardSliderContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="1" instance=ExtResource( 3 )]
+margin_top = 4.0
+margin_bottom = 59.0
+
+[node name="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HardSliderContainer" index="0"]
+text = "Hard Scale"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HardSliderContainer" index="1"]
+min_value = 0.2
+max_value = 1.5
+step = 0.1
+value = 1.0
+
+[node name="SoftSliderContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" index="2" instance=ExtResource( 3 )]
+margin_top = 63.0
+margin_bottom = 118.0
+
+[node name="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoftSliderContainer" index="0"]
+text = "Soft Scale"
+
+[node name="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoftSliderContainer" index="1"]
+min_value = 0.2
+max_value = 1.5
+step = 0.1
+value = 0.3
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HardSliderContainer/HSlider" to="." method="_on_HardScaleSlider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoftSliderContainer/HSlider" to="." method="_on_SoftScaleSlider_value_changed"]
+
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HardSliderContainer"]
+[editable path="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoftSliderContainer"]

@@ -27,9 +27,11 @@ func _ready():
 	character_menu.connect("character_selected", self, "_on_character_selected")
 	clothes_menu.connect("clothes_changed", self, "_on_clothes_changed")
 	misc_menu.connect("misc_selected", self, "_on_misc_selected")
+	misc_menu.connect("scale_changed", self, "_on_misc_scale_changed")
 	slot_menu.connect("slot_toggled", self, "_on_slot_toggled")
 
 	character.connect("misc_updated", self, "_on_misc_updated")
+
 
 func _on_character_selected(path : String):
 	if character:
@@ -48,14 +50,24 @@ func _on_clothes_changed(index, is_toggled):
 func _on_misc_selected(key, is_toggled):
 	character.toggle_misc(key, is_toggled)
 
+func _on_misc_scale_changed(is_hard, value):
+	character.update_penis_scale(is_hard, value)
+
 func _on_slot_toggled(is_right, is_toggled):
 	emit_signal("slot_toggled", is_right, is_toggled)
 
 func _update_misc_list():
 	misc_menu.update_misc_list(character.MiscOptions)
 	var misc_state = character.get_misc_state()
+
 	for key in misc_state:
 		_on_misc_updated(key, misc_state[key])
+
+	var hard_scale = character.get_hard_scale()
+	misc_menu.update_hard_scale(hard_scale)
+
+	var soft_scale = character.get_soft_scale()
+	misc_menu.update_soft_scale(soft_scale)
 
 func _update_clothes_list():
 	var mesh_arr = character.get_mesh_arr()

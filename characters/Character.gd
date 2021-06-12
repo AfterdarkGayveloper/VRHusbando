@@ -78,6 +78,12 @@ func get_misc_state():
 	state[MiscOptions.THRUST] = thrust_controller.is_at_max()
 	return state
 
+func get_hard_scale():
+	return penis.hard_scale.x
+
+func get_soft_scale():
+	return penis.soft_scale.x
+
 func toggle_hard(is_toggled):
 	penis.toggle(is_toggled)
 
@@ -96,6 +102,14 @@ func toggle_hard_allowed(is_toggled):
 
 func toggle_cum_allowed(is_toggled):
 	penis.is_cum_allowed = is_toggled
+
+func update_penis_scale(is_hard, value):
+	if is_hard:
+		penis.hard_scale = Vector3(value, value, value)
+	else:
+		penis.soft_scale = Vector3(value, value, value)
+
+	penis.update_scale()
 
 func change_clothes(index, toggled):
 	mesh_manager.change_clothes(index, toggled)

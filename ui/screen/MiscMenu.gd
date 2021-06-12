@@ -1,10 +1,14 @@
 extends GUIBase
 
-onready var container = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
+onready var container = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ToggleContainer
+
+onready var hard_scale_slider = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HardSliderContainer/HSlider
+onready var soft_scale_slider = $MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/SoftSliderContainer/HSlider
 
 var buttons : Dictionary = {}
 
 signal misc_selected(key, is_toggled)
+signal scale_changed(is_hard, value)
 
 func update_misc_list(misc_list):
 	buttons.clear()
@@ -23,6 +27,19 @@ func update_misc_list(misc_list):
 func update_misc_state(key, is_pressed):
 	buttons[key].pressed = is_pressed
 
+func update_hard_scale(value):
+	hard_scale_slider.value = value
+
+func update_soft_scale(value):
+	soft_scale_slider.value = value
+
 func _on_MiscButton_pressed(key):
 	emit_signal("misc_selected", key, buttons[key].pressed)
 
+func _on_HardScaleSlider_value_changed(value):
+	var is_hard = true
+	emit_signal("scale_changed", is_hard, value)
+
+func _on_SoftScaleSlider_value_changed(value):
+	var is_hard = false
+	emit_signal("scale_changed", is_hard, value)

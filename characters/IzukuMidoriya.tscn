@@ -62,7 +62,7 @@ nodes/thrust_blend/node = SubResource( 8 )
 nodes/thrust_blend/position = Vector2( 200, -40 )
 nodes/thrust_time_scale/node = SubResource( 9 )
 nodes/thrust_time_scale/position = Vector2( 200, 140 )
-node_connections = [ "output", 0, "blink_blend", "blink_blend", 0, "expression_blend", "blink_blend", 1, "blink", "expression_blend", 0, "thrust_blend", "expression_blend", 1, "expression_state_machine", "thrust_time_scale", 0, "Animation", "thrust_blend", 0, "idle", "thrust_blend", 1, "thrust_time_scale" ]
+node_connections = [ "output", 0, "blink_blend", "thrust_time_scale", 0, "Animation", "blink_blend", 0, "expression_blend", "blink_blend", 1, "blink", "expression_blend", 0, "thrust_blend", "expression_blend", 1, "expression_state_machine", "thrust_blend", 0, "idle", "thrust_blend", 1, "thrust_time_scale" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=11]
 

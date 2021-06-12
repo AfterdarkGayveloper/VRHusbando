@@ -98,6 +98,12 @@ func make_soft():
 	change_size(SOFT_MULTIPLIER)
 	is_hard = false
 
+func update_scale():
+	if is_hard:
+		make_hard()
+	else:
+		make_soft()
+
 func _on_body_entered(body : Node) -> void:
 	if not body in contact_bodies:
 		contact_bodies.append(body)
